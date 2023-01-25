@@ -405,7 +405,8 @@ public class PlayerListener {
                                 namesWithType.put(username, result.get().getDisplayName().getFormattedText());
                             }
                         }
-                        // Check cache regardless if found nearby
+                        // Check cache regardless if found nearbyD
+
                         if(namesWithType.containsKey(username)){
                             IChatComponent oldMessage = e.message;
                             String newName = namesWithType.get(username);
@@ -416,6 +417,7 @@ public class PlayerListener {
                                 newName = newName.replaceAll("(?i) *(§[0-9a-fk-orz])*[⚒ቾ](§[0-9a-fk-orz])*","");
                             }
                             newName = newName.replaceAll("(?i) *(§[0-9a-fk-orz])*\\[[^\\[\\]]*\\](§[0-9a-fk-orz])*", ""); // Soopyv2 compatibility
+                            newName = newName.trim();
                             e.message = new ChatComponentText(formattedText.replace(username, newName));
                             e.message.setChatStyle(oldMessage.getChatStyle());
                         }
